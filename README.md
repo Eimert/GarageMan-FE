@@ -1,3 +1,16 @@
+# garageman-fe
+
+Garageman front-end for Frank. Coding challenge.
+
+## Getting started
+Running the app:
+```
+npm i
+npm start
+```
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
