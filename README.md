@@ -11,6 +11,8 @@ npm i
 npm start
 ```
 
+## jq reference
+`jq '.[].cars.vehicles[] | select(.licensed == true)' /var/tmp/inventory.json`
 ---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
