@@ -1,0 +1,16 @@
+.Car-title {
+  font-size: 4rem;
+  color: black;
+  font-weight: 300;
+  letter-spacing: 0.6rem;
+}
+
+.Car-subtitle {
+  font-size: 1.5rem;
+  color: black;
+  font-weight: 300;
+}
+
+.InventoryList-inventory {
+  padding: 10px;
+}

@@ -13,11 +13,10 @@ class InventoryList extends Component {
       inventory: JSON.parse(window.localStorage.getItem("inventory") || "[]"),
       loading: false
     };
-    // this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount() {
-    // if (this.state.inventory.length === 0) 
-    this.getInventory();
+    if (this.state.inventory.length === 0) 
+      this.getInventory();
   }
   async getInventory() {
     try {
@@ -30,12 +29,7 @@ class InventoryList extends Component {
         }
       });
       inventory = jq.json(res.data, '.[].cars.vehicles[]');
-      // while(inventory.length < jq.json(res.data, '.[].cars.vehicles[] | select(.licensed == true)').length) {
-      //   inventory.push
-      // }
-      // inventory.push({ id: res.data.id, text: res.data });
-      // inventory.push(jq.json(res.data, '.[].cars.vehicles[] | select(.licensed == true)'));
-      // console.log(jq.json(res.data, '.[].cars.vehicles[]'));
+      // console.log(jq.json(res.data, '.[].cars.vehicles[] | select(.licensed == true)'));
 
       console.log(inventory);
 
@@ -61,34 +55,33 @@ class InventoryList extends Component {
         </div>
       );
     }
-    {/* sort by date_added asc */}
+    /* sort by date_added asc */
     let inventory = this.state.inventory.sort((a, b) => new Date(a.date_added) - new Date(b.date_added));
+
+    React.createContext(inventory);
     return (
       <div className='InventoryList'>
-      <div className='InventoryList-sidebar'>
-        <h1 className='InventoryList-title'>
-          <span>Garageman</span> Frank
+        <div className='InventoryList-sidebar'>
+          <h1 className='InventoryList-title'>
+            <span>Garageman</span> Frank
         </h1>
-        <img src='https://images.unsplash.com/photo-1562088972-6c6087002996?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80' alt="garageman"/>
-        {/* <button className='InventoryList-getmore' onClick={this.handleClick}>
-          Fetch Inventory
-        </button> */}
-      </div>
+          <img src='https://images.unsplash.com/photo-1562088972-6c6087002996?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80' alt="garage" />
+        </div>
 
-      <div className="InventoryList-inventory">
-        
-        {inventory.map(c => (
-          <Car
-            // key={c.id}
-            make={c.make}
-            model={c.model}
-            date_added={c.date_added}
-            // upvote={() => this.handleVote(j.id, 1)}
-            // downvote={() => this.handleVote(j.id, -1)}
-          />
-        ))}
+        <div className="InventoryList-inventory">
+
+          {inventory.map(c => (
+            <Car
+              key={c.id}
+              id={c.id}
+              make={c.make}
+              model={c.model}
+              date_added={c.date_added}
+            />
+          ))}
+        </div>
+
       </div>
-    </div>
     )
   }
 }
