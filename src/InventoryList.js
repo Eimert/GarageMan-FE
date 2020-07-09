@@ -54,6 +54,15 @@ class InventoryList extends Component {
   }
 
   render() {
+    if (this.state.loading) {
+      return (
+        <div className='InventoryList-spinner'>
+          <h1 className='InventoryList-title'>Loading...</h1>
+        </div>
+      );
+    }
+    {/* sort by date_added asc */}
+    let inventory = this.state.inventory.sort((a, b) => new Date(a.date_added) - new Date(b.date_added));
     return (
       <div className='InventoryList'>
       <div className='InventoryList-sidebar'>
@@ -67,28 +76,19 @@ class InventoryList extends Component {
       </div>
 
       <div className="InventoryList-inventory">
-        {this.state.inventory.map(c => (
+        
+        {inventory.map(c => (
           <Car
             // key={c.id}
             make={c.make}
             model={c.model}
+            date_added={c.date_added}
             // upvote={() => this.handleVote(j.id, 1)}
             // downvote={() => this.handleVote(j.id, -1)}
           />
         ))}
       </div>
     </div>
-
-
-      // <div className="InventoryList">
-      //   <h1>InventoryList</h1>
-      //   <div className="InventoryList-inventory">
-      //     {this.state.inventory.map(car => (
-      //       // WIP
-      //       <div>{car.make} {car.model}</div>
-      //     ))}
-      //   </div>
-      // </div>
     )
   }
 }
