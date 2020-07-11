@@ -11,6 +11,10 @@ npm i
 npm start
 ```
 
+## service worker
+`npm run build && serve -s build`<br>
+[reference](https://medium.com/better-programming/build-a-realtime-pwa-with-react-99e7b0fd3270)
+
 ## jq reference
 `jq '.[].cars.vehicles[] | select(.licensed == true)' /var/tmp/inventory.json`
 ---
