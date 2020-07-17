@@ -40,6 +40,7 @@ class CarPage extends Component {
   }
 
   render() {
+    const lic = this.state.car.licensed;
     return (
       <div className='InventoryList'>
         <div className='InventoryList-sidebar'>
@@ -57,8 +58,7 @@ class CarPage extends Component {
           <div className="Car-subtitle"><strong>Date added:</strong> {Moment(this.state.car.date_added).format('DD-MM-yyyy')}</div>
           <div className="Car-subtitle"><strong>Price:</strong> €{this.state.car.price}</div>
 
-          {/* <ConditionalLink to="" condition={this.state.car.licensed}>Purchase</ConditionalLink> <br></br> */}
-          <Link to="">Purchase</Link> <br></br>
+          {lic === true ? <Link to="">Purchase</Link> : 'Sorry, this car is not for sale'} <br></br>
           <Link to="/">Go back</Link>
         </div>
 
